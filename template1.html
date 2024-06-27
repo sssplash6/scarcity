@@ -94,35 +94,6 @@
             color: gray;
         }
 
-        header nav ul li:hover .dropdown {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: black;
-            color: white;
-            min-width: 150px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            transition: opacity 0.5s, transform 0.5s, background-color 2s, color 2s;
-            opacity: 0;
-            transform: translateY(-20px);
-            z-index: 1000;
-        }
-
-        .dropdown.white-bg {
-            background-color: white;
-            color: black;
-        }
-
-        .dropdown.white-bg a {
-            color: black;
-        }
 
         @media (max-width: 768px) {
             .big-text {
@@ -155,11 +126,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#">Topics</a>
-                    <div class="dropdown">
-                        <a href="/scarcity/topiclist.html">AS Topics</a>
-                        <a href="#">A2 Topics</a>
-                    </div>
+                    <a href="scarcity/topilist">Topics</a>
                 </li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">Login</a></li>
@@ -216,7 +183,6 @@
                 logo.textContent = '';
                 logo.style.fontSize = '0';
                 logo.style.color = 'white';
-                dropdown.classList.remove('white-bg');
                 navLinks.forEach(link => {
                     link.classList.remove('black');
                 });
