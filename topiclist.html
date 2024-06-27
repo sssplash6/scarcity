@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic list</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-theme {
+            background-color: #1f1f1f;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: -2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 75px;
+        }
+        .nav-item {
+            color: black;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .nav-item:hover {
+            color: grey;
+        }
+        .dark-theme .nav-item {
+            color: white;
+        }
+        .dark-theme .nav-item:hover {
+            color: grey;
+        }
+        .theme-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .theme-switcher img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">sc(A*)rcity</div>
+        <nav class="nav-links">
+            <a href="#" class="nav-item">Topics</a>
+            <a href="#" class="nav-item">Contact</a>
+            <a href="#" class="nav-item">Login</a>
+        </nav>
+    </header>
+    <div class="theme-switcher">
+        <img src="https://github.com/sssplash6/scarcity/blob/main/dark%20theme%20icon/sun.png" alt="Light Theme" id="light-theme-icon" onclick="toggleTheme()">
+        <img src="https://github.com/sssplash6/scarcity/blob/main/dark%20theme%20icon/moon.png" alt="Dark Theme" id="dark-theme-icon" onclick="toggleTheme()" style="display: none;">
+    </div>
 
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const isDarkTheme = document.body.classList.contains('dark-theme');
+            document.getElementById('light-theme-icon').style.display = isDarkTheme ? 'none' : 'block';
+            document.getElementById('dark-theme-icon').style.display = isDarkTheme ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
