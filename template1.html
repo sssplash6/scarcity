@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             transition: background-color 2s, color 2s;
         }
-
         .container {
             display: flex;
             justify-content: center;
@@ -23,7 +21,6 @@
             flex-direction: column;
             text-align: center;
         }
-
         .big-text {
             font-size: 10em;
             font-weight: bold;
@@ -35,7 +32,6 @@
             transform: translate(-50%, -50%);
             letter-spacing: -3px;
         }
-
         .description {
             font-size: 4em;
             font-weight: bold;
@@ -43,7 +39,6 @@
             transition: opacity 2s;
             display: none;
         }
-
         header {
             display: flex;
             justify-content: space-between;
@@ -56,7 +51,6 @@
             z-index: 1000;
             transition: background-color 2s, height 2s;
         }
-
         .logo {
             letter-spacing: -2px;
             font-size: 24px;
@@ -64,7 +58,6 @@
             color: white;
             transition: color 2s, font-size 2s;
         }
-
         header nav ul {
             list-style-type: none;
             margin: 0;
@@ -73,45 +66,61 @@
             align-items: center;
             position: relative;
         }
-
         header nav ul li {
             margin-left: 20px;
             margin-right: 50px;
             position: relative;
         }
-
         header nav ul li a {
             color: white;
             text-decoration: none;
             transition: color 0.3s;
         }
-
         header nav ul li a.black {
             color: black;
         }
-
         header nav ul li a:hover {
             color: gray;
         }
-
-
+        header nav ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: black;
+            color: white;
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s, transform 0.5s, background-color 2s, color 2s;
+            opacity: 0;
+            transform: translateY(-20px);
+            z-index: 1000;
+        }
+        .dropdown.white-bg {
+            background-color: white;
+            color: black;
+        }
+        .dropdown.white-bg a {
+            color: black;
+        }
         @media (max-width: 768px) {
             .big-text {
                 font-size: 2em;
             }
-
             .description {
                 font-size: 2em;
             }
-
             header {
                 flex-direction: column;
             }
-
             header nav ul {
                 flex-direction: column;
             }
-
             header nav ul li {
                 margin-left: 0;
                 margin-bottom: 10px;
@@ -119,7 +128,6 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <div class="logo"></div>
@@ -146,10 +154,8 @@
             const logo = document.querySelector('.logo');
             const navLinks = document.querySelectorAll('header nav ul li a');
             const dropdown = document.querySelector('.dropdown');
-
             const scrollY = window.scrollY;
             const maxScroll = 200; // Adjust the scroll threshold as needed
-
             if (scrollY > maxScroll) {
                 bigText.style.opacity = '0';
                 bigText.style.fontSize = '2em';
@@ -167,7 +173,6 @@
                 navLinks.forEach(link => {
                     link.classList.add('black');
                 });
-
                 description.style.display = 'block';
                 description.style.opacity = '1';
             } else {
@@ -183,15 +188,14 @@
                 logo.textContent = '';
                 logo.style.fontSize = '0';
                 logo.style.color = 'white';
+                dropdown.classList.remove('white-bg');
                 navLinks.forEach(link => {
                     link.classList.remove('black');
                 });
-
                 description.style.opacity = '0';
                 description.style.display = 'none';
             }
         });
     </script>
 </body>
-
 </html>
