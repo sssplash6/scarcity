@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Topic list</title>
+    <title>Topic List</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             transition: background-color 0.3s, color 0.3s;
             margin: 0;
             padding: 0;
+            display: flex;
+            height: 100vh;
         }
         .dark-theme {
             background-color: #1f1f1f;
@@ -20,6 +22,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
+            width: 100%;
             border-bottom: 1px solid #ccc;
         }
         .logo {
@@ -53,57 +56,57 @@
             display: flex;
             gap: 10px;
         }
-        .theme-switcher img {
-            width: 30px;
-            height: 30px;
+        .theme-button {
+            padding: 10px;
+            border: none;
             cursor: pointer;
-        }
-        .accordion {
-            width: 80%;
-            margin: 20px auto;
-        }
-        .accordion-item {
-            background-color: #f4f4f4;
-            margin-bottom: 10px;
+            background-color: #ccc;
             border-radius: 5px;
-            border: 1px solid #ddd;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .accordion-item-header {
-            padding: 15px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .accordion-item-header:hover {
-            background-color: #ddd;
-        }
-        .dark-theme .accordion-item {
-            background-color: #333;
+        .dark-theme .theme-button {
+            background-color: #444;
             color: white;
         }
-        .dark-theme .accordion-item-header:hover {
+        .sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            height: 100%;
+            overflow: auto;
+            border-right: 1px solid #ccc;
+        }
+        .dark-theme .sidebar {
+            background-color: #333;
+        }
+        .sidebar-item {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+        .sidebar-item:hover {
+            background-color: #ddd;
+        }
+        .dark-theme .sidebar-item:hover {
             background-color: #444;
         }
-        .accordion-item-content {
+        .dropdown-content {
             display: none;
-            padding: 15px;
+            padding-left: 20px;
         }
-        .accordion-item-content ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .accordion-item-content li {
+        .dropdown-content a {
+            text-decoration: none;
+            color: black;
+            display: block;
             padding: 5px 0;
         }
-        .accordion-item-header::after {
-            content: '\002B'; /* Unicode character for plus sign */
-            font-size: 18px;
-            transition: transform 0.3s;
+        .dropdown-content a:hover {
+            color: grey;
         }
-        .accordion-item-header.active::after {
-            content: '\2212'; /* Unicode character for minus sign */
+        .dark-theme .dropdown-content a {
+            color: white;
+        }
+        .dark-theme .dropdown-content a:hover {
+            color: grey;
         }
     </style>
 </head>
@@ -116,116 +119,71 @@
             <a href="#" class="nav-item">Login</a>
         </nav>
     </header>
-
-    <div class="accordion">
-        <div class="accordion-item">
-            <div class="accordion-item-header" onclick="toggleAccordion(this)">
-                Chapter 1 (A-E)
-            </div>
-            <div class="accordion-item-content">
-                <ul>
-                    <li>A</li>
-                    <li>B</li>
-                    <li>C</li>
-                    <li>D</li>
-                    <li>E</li>
-                </ul>
-            </div>
+    
+    <div class="sidebar">
+        <div class="sidebar-item" onclick="toggleDropdown('chapter1')">Chapter 1 (A-E)</div>
+        <div id="chapter1" class="dropdown-content">
+            <a href="#">A</a>
+            <a href="#">B</a>
+            <a href="#">C</a>
+            <a href="#">D</a>
+            <a href="#">E</a>
         </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header" onclick="toggleAccordion(this)">
-                Chapter 2 (F-J)
-            </div>
-            <div class="accordion-item-content">
-                <ul>
-                    <li>F</li>
-                    <li>G</li>
-                    <li>H</li>
-                    <li>I</li>
-                    <li>J</li>
-                </ul>
-            </div>
+        <div class="sidebar-item" onclick="toggleDropdown('chapter2')">Chapter 2 (F-J)</div>
+        <div id="chapter2" class="dropdown-content">
+            <a href="#">F</a>
+            <a href="#">G</a>
+            <a href="#">H</a>
+            <a href="#">I</a>
+            <a href="#">J</a>
         </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header" onclick="toggleAccordion(this)">
-                Chapter 3 (K-O)
-            </div>
-            <div class="accordion-item-content">
-                <ul>
-                    <li>K</li>
-                    <li>L</li>
-                    <li>M</li>
-                    <li>N</li>
-                    <li>O</li>
-                </ul>
-            </div>
+        <div class="sidebar-item" onclick="toggleDropdown('chapter3')">Chapter 3 (K-O)</div>
+        <div id="chapter3" class="dropdown-content">
+            <a href="#">K</a>
+            <a href="#">L</a>
+            <a href="#">M</a>
+            <a href="#">N</a>
+            <a href="#">O</a>
         </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header" onclick="toggleAccordion(this)">
-                Chapter 4 (P-T)
-            </div>
-            <div class="accordion-item-content">
-                <ul>
-                    <li>P</li>
-                    <li>Q</li>
-                    <li>R</li>
-                    <li>S</li>
-                    <li>T</li>
-                </ul>
-            </div>
+        <div class="sidebar-item" onclick="toggleDropdown('chapter4')">Chapter 4 (P-T)</div>
+        <div id="chapter4" class="dropdown-content">
+            <a href="#">P</a>
+            <a href="#">Q</a>
+            <a href="#">R</a>
+            <a href="#">S</a>
+            <a href="#">T</a>
         </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header" onclick="toggleAccordion(this)">
-                Chapter 5 (U-Y)
-            </div>
-            <div class="accordion-item-content">
-                <ul>
-                    <li>U</li>
-                    <li>V</li>
-                    <li>W</li>
-                    <li>X</li>
-                    <li>Y</li>
-                </ul>
-            </div>
+        <div class="sidebar-item" onclick="toggleDropdown('chapter5')">Chapter 5 (U-Y)</div>
+        <div id="chapter5" class="dropdown-content">
+            <a href="#">U</a>
+            <a href="#">V</a>
+            <a href="#">W</a>
+            <a href="#">X</a>
+            <a href="#">Y</a>
         </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header" onclick="toggleAccordion(this)">
-                Chapter 6 (Z)
-            </div>
-            <div class="accordion-item-content">
-                <ul>
-                    <li>Z</li>
-                </ul>
-            </div>
+        <div class="sidebar-item" onclick="toggleDropdown('chapter6')">Chapter 6 (Z)</div>
+        <div id="chapter6" class="dropdown-content">
+            <a href="#">Z</a>
         </div>
     </div>
-
+    
     <div class="theme-switcher">
-        <img src="https://github.com/sssplash6/scarcity/blob/main/dark%20theme%20icon/sun.png" alt="Light Theme" id="light-theme-icon" onclick="toggleTheme()">
-        <img src="https://github.com/sssplash6/scarcity/blob/main/dark%20theme%20icon/moon.png" alt="Dark Theme" id="dark-theme-icon" onclick="toggleTheme()" style="display: none;">
+        <button class="theme-button" id="theme-toggle" onclick="toggleTheme()">Dark</button>
     </div>
 
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark-theme');
             const isDarkTheme = document.body.classList.contains('dark-theme');
-            document.getElementById('light-theme-icon').style.display = isDarkTheme ? 'none' : 'block';
-            document.getElementById('dark-theme-icon').style.display = isDarkTheme ? 'block' : 'none';
+            document.getElementById('theme-toggle').innerText = isDarkTheme ? 'Light' : 'Dark';
         }
 
-        function toggleAccordion(header) {
-            const content = header.nextElementSibling;
-            const allContents = document.querySelectorAll('.accordion-item-content');
-            const allHeaders = document.querySelectorAll('.accordion-item-header');
-
-            allContents.forEach(item => item.style.display = 'none');
-            allHeaders.forEach(item => item.classList.remove('active'));
-
+        function toggleDropdown(chapterId) {
+            const content = document.getElementById(chapterId);
             if (content.style.display === 'block') {
                 content.style.display = 'none';
             } else {
                 content.style.display = 'block';
-                header.classList.add('active');
             }
         }
     </script>
