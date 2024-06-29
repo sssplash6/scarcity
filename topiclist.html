@@ -83,7 +83,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            padding-top: 60px; 
+            padding-top: 60px; /* Adjust padding to ensure sidebar items do not overlap with the header */
             box-sizing: border-box;
         }
         .dark-theme .sidebar {
@@ -123,8 +123,25 @@
             margin-left: 250px;
             padding: 20px;
             width: calc(100% - 250px);
-            margin-top: 80px; 
+            margin-top: 80px; /* Adjust to leave space for fixed header */
             box-sizing: border-box;
+            display: flex;
+            height: calc(100vh - 100px); /* Full height minus header and padding */
+        }
+        .box {
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .dark-theme .box {
+            background-color: #444;
+            color: white;
+            border: 1px solid #666;
         }
     </style>
 </head>
@@ -179,15 +196,19 @@
     <header>
         <div class="logo">sc(A*)rcity</div>
         <nav class="nav-links">
-            <a href="topiclist.html" class="nav-item">Topics</a>
+            <a href="#" class="nav-item">Topics</a>
             <a href="#" class="nav-item">Contact</a>
             <a href="#" class="nav-item">Login</a>
         </nav>
     </header>
     
     <div class="content">
-        <!-- Main content goes here -->
-        <p>Welcome to the topic list page. Select a chapter from the sidebar to see the topics.</p>
+        <div class="box">
+            <p>Content for the first box. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Duis mollis, erat id tincidunt tristique, tortor ligula facilisis risus, et fringilla sapien lorem a arcu. Phasellus vel dictum nibh, ac mattis sem. Etiam sed felis sit amet libero vehicula tincidunt. Cras a tincidunt dolor. Integer ultricies sapien at urna interdum, vel accumsan nulla ultricies.</p>
+        </div>
+        <div class="box">
+            <p>Content for the second box. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Duis mollis, erat id tincidunt tristique, tortor ligula facilisis risus, et fringilla sapien lorem a arcu. Phasellus vel dictum nibh, ac mattis sem. Etiam sed felis sit amet libero vehicula tincidunt. Cras a tincidunt dolor. Integer ultricies sapien at urna interdum, vel accumsan nulla ultricies.</p>
+        </div>
     </div>
     
     <div class="theme-switcher">
